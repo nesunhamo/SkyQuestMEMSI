@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="day1">#f1f1f2</color>
+    <color name="day2">#3668b2</color>
+    <color name="day3">#6d6e70</color>
+    <color name="sky_blue">#3568b2</color>
+    <color name="sky_cyan">#6484c4</color>
+</resources>

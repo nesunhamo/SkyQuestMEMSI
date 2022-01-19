@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ThirdFragment">
+
+    <TextView
+        android:id="@+id/reward_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="@string/daily_reward"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_second"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:backgroundTint="@color/sky_blue"
+        android:text="@string/claim_reward"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/day1banner" />
+
+    <TextView
+        android:id="@+id/reward_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="55dp"
+        android:gravity="center_horizontal|top"
+        android:text="@string/reward_description"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reward_title" />
+
+    <ImageView
+        android:id="@+id/day1banner"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="48dp"
+        android:contentDescription="@string/content_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reward_description"
+        app:srcCompat="@color/day1" />
+
+    <ImageView
+        android:id="@+id/day2banner"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toStartOf="@+id/day3banner"
+        app:layout_constraintStart_toEndOf="@+id/day1banner"
+        app:layout_constraintTop_toTopOf="@+id/day1banner"
+        app:srcCompat="@color/day2"
+        android:contentDescription="@string/content_description" />
+
+    <ImageView
+        android:id="@+id/day3banner"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="36dp"
+        android:contentDescription="@string/content_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/day1banner"
+        app:srcCompat="@color/day3" />
+
+    <TextView
+        android:id="@+id/day1title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="@string/day_1"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/day1banner"
+        app:layout_constraintStart_toStartOf="@+id/day1banner"
+        app:layout_constraintTop_toTopOf="@+id/day1banner" />
+
+    <TextView
+        android:id="@+id/day2title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/day_2"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/day2banner"
+        app:layout_constraintStart_toStartOf="@+id/day2banner"
+        app:layout_constraintTop_toTopOf="@+id/day1title" />
+
+    <TextView
+        android:id="@+id/day3title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/day_3"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/day3banner"
+        app:layout_constraintStart_toStartOf="@+id/day3banner"
+        app:layout_constraintTop_toTopOf="@+id/day1title" />
+
+    <TextView
+        android:id="@+id/skycoin1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:text="@string/skycoin1"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/day1banner"
+        app:layout_constraintEnd_toEndOf="@+id/day1banner"
+        app:layout_constraintStart_toStartOf="@+id/day1banner"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/skycoin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/skycoin2"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/skycoin1"
+        app:layout_constraintEnd_toEndOf="@+id/day2banner"
+        app:layout_constraintStart_toStartOf="@+id/day2banner"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/skycoin3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/skycoin2"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/skycoin1"
+        app:layout_constraintEnd_toEndOf="@+id/day3banner"
+        app:layout_constraintStart_toStartOf="@+id/day3banner"
+        tools:ignore="SmallSp" />
+
+    <ImageView
+        android:id="@+id/day1coin"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/coin1_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/skycoin1"
+        app:layout_constraintEnd_toEndOf="@+id/day1banner"
+        app:layout_constraintStart_toStartOf="@+id/day1banner"
+        app:layout_constraintTop_toBottomOf="@+id/day1title"
+        android:contentDescription="@string/content_description" />
+
+    <ImageView
+        android:id="@+id/day2coin"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@mipmap/coin2_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/skycoin2"
+        app:layout_constraintEnd_toEndOf="@+id/day2banner"
+        app:layout_constraintStart_toStartOf="@+id/day2banner"
+        app:layout_constraintTop_toBottomOf="@+id/day2title"
+        android:contentDescription="@string/content_description" />
+
+    <ImageView
+        android:id="@+id/day3coin"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@mipmap/coin3_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/skycoin3"
+        app:layout_constraintEnd_toEndOf="@+id/day3banner"
+        app:layout_constraintStart_toStartOf="@+id/day3banner"
+        app:layout_constraintTop_toBottomOf="@+id/day3title"
+        android:contentDescription="@string/content_description" />
+</androidx.constraintlayout.widget.ConstraintLayout>

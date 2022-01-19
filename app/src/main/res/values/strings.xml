@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">SkyQuest</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="content_description">Image Description</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="slogan_text">Immerse in the Sky</string>
+    <string name="sign_in_text">Sign in with Flight Token</string>
+    <string name="sponsor_text">Powered by 11 Skies</string>
+
+    <string name="daily_reward">Daily Reward</string>
+    <string name="reward_description">Come to 11 Skies and scan something every day to receive your daily reward. Scan more days in a row for a larger reward.</string>
+    <string name="day_1">Day 1</string>
+    <string name="day_2">Day 2</string>
+    <string name="day_3">Day 3</string>
+    <string name="skycoin1">1 Skycoin</string>
+    <string name="skycoin2">2 Skycoins</string>
+    <string name="skycoin3">3 Skycoins</string>
+    <string name="claim_reward">Claim Reward</string>
+
+    <string name="scan_sky_art">Scan Code</string>
+</resources>
