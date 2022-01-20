@@ -64,7 +64,7 @@ public class AugmentedRealityActivity extends AppCompatActivity implements GLSur
     private RequestManager glideRequestManager;
 
     private boolean installRequested;
-    private boolean addImagesDuringBuild = true;
+    private boolean addImagesDuringBuild = false;
 
     private Session session;
     private final SnackbarHelper messageSnackbarHelper = new SnackbarHelper();
@@ -373,17 +373,17 @@ public class AugmentedRealityActivity extends AppCompatActivity implements GLSur
 
         // Draw all images in augmentedImageMap
         for (Pair<AugmentedImage, Anchor> pair : augmentedImageMap.values()) {
-        AugmentedImage augmentedImage = pair.first;
-        Anchor centerAnchor = augmentedImageMap.get(augmentedImage.getIndex()).second;
-        switch (augmentedImage.getTrackingState()) {
-            case TRACKING:
-            augmentedImageRenderer.draw(
-                viewmtx, projmtx, augmentedImage, centerAnchor, colorCorrectionRgba);
-            break;
-            default:
-            break;
+            AugmentedImage augmentedImage = pair.first;
+            Anchor centerAnchor = augmentedImageMap.get(augmentedImage.getIndex()).second;
+            switch (augmentedImage.getTrackingState()) {
+                case TRACKING:
+                augmentedImageRenderer.draw(
+                    viewmtx, projmtx, augmentedImage, centerAnchor, colorCorrectionRgba);
+                    break;
+                default:
+                    break;
+            }
         }
-    }
     }
 
     private boolean setupAugmentedImageDatabase(Config config) {
@@ -410,7 +410,7 @@ public class AugmentedRealityActivity extends AppCompatActivity implements GLSur
         } else {
             // This is an alternative way to initialize an AugmentedImageDatabase instance,
             // load a pre-existing augmented image database.
-            try (InputStream is = getAssets().open("sample_database.imgdb")) {
+            try (InputStream is = getAssets().open("qr_codes_db.imgdb")) {
                 augmentedImageDatabase = AugmentedImageDatabase.deserialize(session, is);
             } catch (IOException e) {
                 Log.e(TAG, "IO exception loading augmented image database.", e);

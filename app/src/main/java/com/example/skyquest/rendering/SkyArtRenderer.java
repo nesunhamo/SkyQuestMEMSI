@@ -35,7 +35,7 @@ public class SkyArtRenderer {
     0x009688, 0x4CAF50, 0x8BC34A, 0xCDDC39, 0xFFEB3B, 0xFFC107, 0xFF9800,
   };
 
-  private final ObjectRenderer skyArt = new ObjectRenderer();
+  private final ObjectRenderer skyArtAndy = new ObjectRenderer();
 
   public SkyArtRenderer() {}
 
@@ -46,11 +46,10 @@ public class SkyArtRenderer {
 //    imageFrameUpperLeft.setMaterialProperties(0.0f, 3.5f, 1.0f, 6.0f);
 //    imageFrameUpperLeft.setBlendMode(BlendMode.AlphaBlending);
 
-    skyArt.createOnGlThread(
-            context, "models/andy.obj", "models/andy.png");
-    //        context, "models/open_source_buddha.obj", "models/modeldensemeshtexturemmgsiterativemethod_baked_material_baseColor.jpeg");
-    skyArt.setMaterialProperties(0.0f, 3.5f, 1.0f, 6.0f);
-    skyArt.setBlendMode(ObjectRenderer.BlendMode.AlphaBlending);
+    skyArtAndy.createOnGlThread(
+            context, "models/pikachu.obj", "models/Textura.Pikachu.1.png", "models/P_007_Texture_Poleball.png");
+    skyArtAndy.setMaterialProperties(0.0f, 1f, 1.0f, 3.0f);
+    skyArtAndy.setBlendMode(ObjectRenderer.BlendMode.AlphaBlending);
 
   }
 
@@ -60,6 +59,7 @@ public class SkyArtRenderer {
       AugmentedImage augmentedImage,
       Anchor centerAnchor,
       float[] colorCorrectionRgba) {
+    
     float[] tintColor =
         convertHexToColor(TINT_COLORS_HEX[augmentedImage.getIndex() % TINT_COLORS_HEX.length]);
 
@@ -75,12 +75,12 @@ public class SkyArtRenderer {
     );
 
     // TODO you can change this for bigger objects
-    float scaleFactor = 1f;
+    float scaleFactor = 0.1f;
     float[] modelMatrix = new float[16];
 
     finalPose.toMatrix(modelMatrix, 0);
-    skyArt.updateModelMatrix(modelMatrix, scaleFactor);
-    skyArt.draw(viewMatrix, projectionMatrix, colorCorrectionRgba, tintColor);
+    skyArtAndy.updateModelMatrix(modelMatrix, scaleFactor);
+    skyArtAndy.draw(viewMatrix, projectionMatrix, colorCorrectionRgba, tintColor);
 }
 
   private static float[] convertHexToColor(int colorHex) {
