@@ -22,7 +22,8 @@
     <string name="skycoin1">1 Skycoin</string>
     <string name="skycoin2">2 Skycoins</string>
     <string name="skycoin3">3 Skycoins</string>
-    <string name="claim_reward">Claim Reward</string>
+    <string name="collect_item">Collect Item</string>
 
-    <string name="scan_sky_art">Scan Code</string>
+    <string name="scan_sky_art">Scan More Art</string>
+    <string name="claim_reward">Claim Reward</string>
 </resources>

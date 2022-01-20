@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,10 +59,12 @@ public class AugmentedRealityActivity extends AppCompatActivity implements GLSur
 
     // Rendering. The Renderers are created here, and initialized when the GL surface is created.
     private GLSurfaceView surfaceView;
-    private ImageView fitToScanView;
+    private ImageView fitToScanView, logo;
+    private Button collectItemButton;
     private RequestManager glideRequestManager;
 
     private boolean installRequested;
+    private boolean addImagesDuringBuild = true;
 
     private Session session;
     private final SnackbarHelper messageSnackbarHelper = new SnackbarHelper();
@@ -72,6 +75,7 @@ public class AugmentedRealityActivity extends AppCompatActivity implements GLSur
     private final SkyArtRenderer augmentedImageRenderer = new SkyArtRenderer();
 
     private boolean shouldConfigureSession = false;
+    private boolean hasScannedArt = false;
 
     // Augmented image configuration and rendering.
     // Load a single image (true) or a pre-generated image database (false).
@@ -86,6 +90,7 @@ public class AugmentedRealityActivity extends AppCompatActivity implements GLSur
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_augmented_reality);
         surfaceView = findViewById(R.id.surfaceview);
+        collectItemButton = findViewById(R.id.collect_item_button);
         displayRotationHelper = new DisplayRotationHelper(/*context=*/ this);
 
         // Set up renderer.
@@ -97,12 +102,28 @@ public class AugmentedRealityActivity extends AppCompatActivity implements GLSur
         surfaceView.setWillNotDraw(false);
 
         fitToScanView = findViewById(R.id.image_view_fit_to_scan);
+        logo = findViewById(R.id.logo_image);
         glideRequestManager = Glide.with(this);
         glideRequestManager
             .load(Uri.parse("file:///android_asset/fit_to_scan.png"))
             .into(fitToScanView);
+        glideRequestManager
+                .load(Uri.parse("file:///android_asset/sky_quest_logo_circle.png"))
+                .into(logo);
 
         installRequested = false;
+
+        logo.setVisibility(View.GONE);
+        collectItemButton.setVisibility(View.GONE);
+        collectItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO rewards pop up AR model created then finish on claim reward
+                if(hasScannedArt){
+                    finish();
+                }
+            }
+        });
 
         Intent intent = new Intent(this, EssentialHackActivity.class);
         startActivity(intent);
@@ -187,6 +208,10 @@ public class AugmentedRealityActivity extends AppCompatActivity implements GLSur
         displayRotationHelper.onResume();
 
         fitToScanView.setVisibility(View.VISIBLE);
+        collectItemButton.setVisibility(View.GONE);
+        logo.setVisibility(View.GONE);
+        hasScannedArt = false;
+
     }
 
     @Override
@@ -311,8 +336,8 @@ public class AugmentedRealityActivity extends AppCompatActivity implements GLSur
             case PAUSED:
             // When an image is in PAUSED state, but the camera is not PAUSED, it has been detected,
             // but not yet tracked.
-            String text = String.format("Detected Image %d", augmentedImage.getIndex());
-            messageSnackbarHelper.showMessage(this, text);
+//            String text = String.format("Detected Image %d", augmentedImage.getIndex());
+//            messageSnackbarHelper.showMessage(this, text);
             break;
 
             case TRACKING:
@@ -322,6 +347,10 @@ public class AugmentedRealityActivity extends AppCompatActivity implements GLSur
                     @Override
                     public void run() {
                         fitToScanView.setVisibility(View.GONE);
+                        collectItemButton.setVisibility(View.VISIBLE);
+                        logo.setVisibility(View.VISIBLE);
+
+                        hasScannedArt = true;
                     }
                 });
 
@@ -389,13 +418,15 @@ public class AugmentedRealityActivity extends AppCompatActivity implements GLSur
             }
             }
 
-            // TODO Nesu add our QR codes DONE
-            // TODO add physical dimensions to speed up scanning
-            String[] images = {"GoogleForm.png", "Microphone.png", "SkyArtExample.png"};
-            for(String image : images) {
-                Bitmap augmentedImageBitmap = loadAugmentedImageBitmap(image);
-                String imageName = image.substring(0, image.length() - 3);
-                augmentedImageDatabase.addImage(imageName, augmentedImageBitmap);
+            if (addImagesDuringBuild){
+                // TODO Nesu add our QR codes DONE
+                // TODO add physical dimensions to speed up scanning
+                String[] images = {"qr_codes/GoogleForm.png", "qr_codes/Microphone.png", "qr_codes/SkyArtExample.png"};
+                for(String image : images) {
+                    Bitmap augmentedImageBitmap = loadAugmentedImageBitmap(image);
+                    String imageName = image.substring(0, image.length() - 3);
+                    augmentedImageDatabase.addImage(imageName, augmentedImageBitmap);
+                }
             }
 
             config.setAugmentedImageDatabase(augmentedImageDatabase);
