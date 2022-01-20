@@ -135,7 +135,7 @@ public class ObjectRenderer {
    * @param objAssetName Name of the OBJ file containing the model geometry.
    * @param diffuseTextureAssetName Name of the PNG file containing the diffuse texture map.
    */
-  public void createOnGlThread(Context context, String objAssetName, String diffuseTextureAssetName, String diffuseTextureAsset2Name)
+  public void createOnGlThread(Context context, String objAssetName, String diffuseTextureAssetName)
       throws IOException {
     // Compiles and loads the shader based on the current configuration.
     compileAndLoadShaderProgram(context);

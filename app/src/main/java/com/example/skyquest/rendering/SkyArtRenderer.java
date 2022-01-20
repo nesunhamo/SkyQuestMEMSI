@@ -35,21 +35,22 @@ public class SkyArtRenderer {
     0x009688, 0x4CAF50, 0x8BC34A, 0xCDDC39, 0xFFEB3B, 0xFFC107, 0xFF9800,
   };
 
-  private final ObjectRenderer skyArtAndy = new ObjectRenderer();
+  private final ObjectRenderer skyArtPokeball = new ObjectRenderer();
+  private final ObjectRenderer skyArtPikachu = new ObjectRenderer();
 
   public SkyArtRenderer() {}
 
   public void createOnGlThread(Context context) throws IOException {
 
-//    imageFrameUpperLeft.createOnGlThread(
-//        context, "models/frame_upper_left.obj", "models/frame_base.png");
-//    imageFrameUpperLeft.setMaterialProperties(0.0f, 3.5f, 1.0f, 6.0f);
-//    imageFrameUpperLeft.setBlendMode(BlendMode.AlphaBlending);
+    skyArtPokeball.createOnGlThread(
+            context, "models/pokeball.obj", "models/ball_texture.png");
+    skyArtPokeball.setMaterialProperties(0.0f, 1f, 1.0f, 8.0f);
+    skyArtPokeball.setBlendMode(ObjectRenderer.BlendMode.AlphaBlending);
 
-    skyArtAndy.createOnGlThread(
-            context, "models/pikachu.obj", "models/Textura.Pikachu.1.png", "models/P_007_Texture_Poleball.png");
-    skyArtAndy.setMaterialProperties(0.0f, 1f, 1.0f, 3.0f);
-    skyArtAndy.setBlendMode(ObjectRenderer.BlendMode.AlphaBlending);
+    skyArtPikachu.createOnGlThread(
+            context, "models/pikachu.obj", "models/pikachu_texture.png");
+    skyArtPikachu.setMaterialProperties(0.0f, 1f, 1.0f, 8.0f);
+    skyArtPikachu.setBlendMode(ObjectRenderer.BlendMode.AlphaBlending);
 
   }
 
@@ -79,8 +80,11 @@ public class SkyArtRenderer {
     float[] modelMatrix = new float[16];
 
     finalPose.toMatrix(modelMatrix, 0);
-    skyArtAndy.updateModelMatrix(modelMatrix, scaleFactor);
-    skyArtAndy.draw(viewMatrix, projectionMatrix, colorCorrectionRgba, tintColor);
+    // TODO test with/out pokeball
+//    skyArtPokeball.updateModelMatrix(modelMatrix, scaleFactor);
+//    skyArtPokeball.draw(viewMatrix, projectionMatrix, colorCorrectionRgba, tintColor);
+    skyArtPikachu.updateModelMatrix(modelMatrix, scaleFactor);
+    skyArtPikachu.draw(viewMatrix, projectionMatrix, colorCorrectionRgba, tintColor);
 }
 
   private static float[] convertHexToColor(int colorHex) {
