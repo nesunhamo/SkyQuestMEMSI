@@ -71,15 +71,15 @@ public class SkyArtRenderer {
             Pose.makeTranslation(
                     0f * augmentedImage.getExtentX(),    /* TODO The float value is the amount by which to multiple the QR code size
                                                                 For example, 1f * augmentedImage.getExtentX() would result in a translation of 8cm */
-                    -1.6f * augmentedImage.getExtentX(), /* This will move back and forth on the platform*/
-                    -0.6f * augmentedImage.getExtentZ()) /* This will move up and down */
+                    -1.0f * augmentedImage.getExtentX(), /* This will move back and forth on the platform*/
+                    -0.3f * augmentedImage.getExtentZ()) /* This will move up and down */
     );
     Pose finalPose = worldBoundaryPose.compose(
             Pose.makeRotation(-1, 0, 0, 1)
     );
 
     // TODO you can change this for bigger objects
-    float scaleFactor = 0.1f;
+    float scaleFactor = 0.085f;
     float[] modelMatrix = new float[16];
 
     finalPose.toMatrix(modelMatrix, 0);
