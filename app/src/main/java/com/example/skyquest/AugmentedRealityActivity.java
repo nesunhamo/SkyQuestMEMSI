@@ -43,6 +43,11 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
 /**
  * This app extends the HelloAR Java app to include image tracking functionality.
@@ -120,7 +125,8 @@ public class AugmentedRealityActivity extends AppCompatActivity implements GLSur
             public void onClick(View view) {
                 // TODO rewards pop up AR model created then finish on claim reward
                 if(hasScannedArt){
-                    finish();
+                    Intent intent = new Intent(view.getContext(), CollectionActivity.class);
+                    startActivity(intent);
                 }
             }
         });

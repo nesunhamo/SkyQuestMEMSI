@@ -26,4 +26,6 @@
 
     <string name="scan_sky_art">Scan More Art</string>
     <string name="claim_reward">Claim Reward</string>
+
+    <string name="continue_button">Continue</string>
 </resources>

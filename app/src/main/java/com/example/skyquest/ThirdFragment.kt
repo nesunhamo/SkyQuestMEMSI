@@ -7,18 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+
+//package com.example.skyquest
+
+//import android.os.Bundle
+//import androidx.fragment.app.Fragment
+//import android.view.LayoutInflater
+//import android.view.View
+//import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.skyquest.databinding.FragmentSecondBinding
+import com.example.skyquest.databinding.FragmentThirdBinding
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment() {
+class ThirdFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private var _binding: FragmentThirdBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,7 +31,7 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentThirdBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -34,10 +39,11 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.nextButton.setOnClickListener {
-//            findNavController().navigate(R.id.action_SecondFragment_to_thirdFragment)
-            val intent = Intent(activity, CollectionActivity::class.java)
+        binding.scanButton.setOnClickListener {
+            Toast.makeText(activity,"Rewards Claimed!", Toast.LENGTH_SHORT).show();
+            val intent = Intent(activity, AugmentedRealityActivity::class.java)
             startActivity(intent)
+            activity?.overridePendingTransition(0, 0)
         }
     }
 
