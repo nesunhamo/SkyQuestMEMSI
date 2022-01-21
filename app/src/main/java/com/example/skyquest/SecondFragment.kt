@@ -35,9 +35,9 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.nextButton.setOnClickListener {
-//            findNavController().navigate(R.id.action_SecondFragment_to_thirdFragment)
-            val intent = Intent(activity, CollectionActivity::class.java)
-            startActivity(intent)
+            findNavController().navigate(R.id.action_SecondFragment_to_thirdFragment)
+//            val intent = Intent(activity, CollectionActivity::class.java)
+//            startActivity(intent)
         }
     }
 

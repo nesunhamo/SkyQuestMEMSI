@@ -28,4 +28,7 @@
     <string name="claim_reward">Claim Reward</string>
 
     <string name="continue_button">Continue</string>
+    <string name="let_s_get_started">Lets get started!</string>
+    <string name="congratulations">Congratulations!!!</string>
+    <string name="you_found_ur_sleeping_pika">You found UR sleeping Pika</string>
 </resources>
