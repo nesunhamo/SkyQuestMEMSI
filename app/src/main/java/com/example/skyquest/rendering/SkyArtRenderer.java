@@ -64,12 +64,15 @@ public class SkyArtRenderer {
     float[] tintColor =
         convertHexToColor(TINT_COLORS_HEX[augmentedImage.getIndex() % TINT_COLORS_HEX.length]);
 
+    /** ------------------- Edit augmented reality offsets over here, help marked by "To Do" --------------------- **/
+
     Pose anchorPose = centerAnchor.getPose();
     Pose worldBoundaryPose = anchorPose.compose(
             Pose.makeTranslation(
-                    0f * augmentedImage.getExtentX(),
-                    -1.6f * augmentedImage.getExtentX(), /* This will move back and forth on the platform */
-                    -0.6f * augmentedImage.getExtentZ())
+                    0f * augmentedImage.getExtentX(),    /* TODO The float value is the amount by which to multiple the QR code size
+                                                                For example, 1f * augmentedImage.getExtentX() would result in a translation of 8cm */
+                    -1.6f * augmentedImage.getExtentX(), /* This will move back and forth on the platform*/
+                    -0.6f * augmentedImage.getExtentZ()) /* This will move up and down */
     );
     Pose finalPose = worldBoundaryPose.compose(
             Pose.makeRotation(-1, 0, 0, 1)
@@ -85,6 +88,8 @@ public class SkyArtRenderer {
 //    skyArtPokeball.draw(viewMatrix, projectionMatrix, colorCorrectionRgba, tintColor);
     skyArtPikachu.updateModelMatrix(modelMatrix, scaleFactor);
     skyArtPikachu.draw(viewMatrix, projectionMatrix, colorCorrectionRgba, tintColor);
+
+    /** ------------------- Edit section end --------------------- **/
 }
 
   private static float[] convertHexToColor(int colorHex) {
