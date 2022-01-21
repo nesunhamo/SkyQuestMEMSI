@@ -40,7 +40,7 @@ class ThirdFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.scanButton.setOnClickListener {
-            Toast.makeText(activity,"Rewards Claimed!", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(activity,"Rewards Claimed!", Toast.LENGTH_SHORT).show();
             val intent = Intent(activity, AugmentedRealityActivity::class.java)
             startActivity(intent)
             activity?.overridePendingTransition(0, 0)

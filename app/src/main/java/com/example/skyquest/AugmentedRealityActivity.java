@@ -84,7 +84,7 @@ public class AugmentedRealityActivity extends AppCompatActivity implements GLSur
 
     // Augmented image configuration and rendering.
     // Load a single image (true) or a pre-generated image database (false).
-    private final boolean useSingleImage = false;
+    private final boolean useSingleImage = true;
     // Augmented image and its associated center pose anchor, keyed by index of the augmented image in
     // the
     // database.
@@ -402,13 +402,13 @@ public class AugmentedRealityActivity extends AppCompatActivity implements GLSur
         // * shorter setup time
         // * doesn't require images to be packaged in apk.
         if (useSingleImage) {
-            Bitmap augmentedImageBitmap = loadAugmentedImageBitmap("default.jpg");
+            Bitmap augmentedImageBitmap = loadAugmentedImageBitmap("SkyArtDemo.png");
             if (augmentedImageBitmap == null) {
                 return false;
             }
 
             augmentedImageDatabase = new AugmentedImageDatabase(session);
-            augmentedImageDatabase.addImage("image_name", augmentedImageBitmap);
+            augmentedImageDatabase.addImage("image_name", augmentedImageBitmap, 0.08f);
             // If the physical size of the image is known, you can instead use:
             //     augmentedImageDatabase.addImage("image_name", augmentedImageBitmap, widthInMeters);
             // This will improve the initial detection speed. ARCore will still actively estimate the
