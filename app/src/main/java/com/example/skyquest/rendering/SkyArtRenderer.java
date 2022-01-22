@@ -79,7 +79,7 @@ public class SkyArtRenderer {
     );
 
     // TODO you can change this for bigger objects
-    float scaleFactor = 0.085f;
+    float scaleFactor = 0.065f;
     float[] modelMatrix = new float[16];
 
     finalPose.toMatrix(modelMatrix, 0);
